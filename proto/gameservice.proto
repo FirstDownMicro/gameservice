@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package go.micro.srv.gameservice; 
+
+service GameService {
+  rpc StartGame(Empty) returns (EmptyResponse) {}
+  rpc RunPlay(Empty) returns (EmptyResponse) {}
+}
+
+message Empty {
+
+}
+
+message CreateGameRequest {
+    string hometeam = 1;
+    string awayteam = 2;
+}
+
+message Game {
+    int32 id = 1;
+    string score = 2;
+    int32 attendance = 3;
+    string quarter = 4;
+    int32 totalrunPlays = 5;
+    string title = 6;
+}
+
+message GameResponse {
+    Game game = 1;
+}
+
+message GameCreatedResponse {
+    bool created = 1;
+    Game game = 2;
+  }
+
+message RunPlayRequest {
+    int32 gameID = 1;
+    repeated int32 playerIDs = 2;
+    string playFormation = 3;
+}
+
+message Result {
+    int32 netYardGain = 1;
+    string down = 2;
+}
+
+message ResultResponse {
+    Result result = 1;
+}
+
+message EmptyResponse {
+}
