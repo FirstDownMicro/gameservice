@@ -8,7 +8,7 @@ build:
 runlocal:
 	go run *.go --server_address :50051 --registry mdns --broker nats --broker_address :4222
 run:
-	docker run -p 50051:50051 \
+	docker run --net="host" \
 		-e MICRO_SERVER_ADDRESS=:50051 \
 		-e MICRO_REGISTRY=mdns \
 		-e MICRO_BROKER=nats \
